@@ -1,1 +1,1 @@
-just some leetcode problems
+data structures and algorithms practice
