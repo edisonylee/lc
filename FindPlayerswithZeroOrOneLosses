@@ -1,0 +1,31 @@
+from collections import defaultdict
+class Solution:
+    def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
+    # Given an integer array i.e., [[1,3], [2,3]] such that 
+    # the first number is a winner & the second value is the loser
+    # return a list of players that have not lost ANY matches
+    # and a list of players that have lost exactly ONE match
+    
+    # So, we want to count the frequency of how many players have lost
+    # We know that in HashMaps, we can track the frequency of losses
+    # So, if losses = 0, we can add that to index 1
+    # And, if losses = 1, we can add that to index 2
+    # We do NOT need to track wins or more than 1 loss
+        counts = defaultdict(int)
+        
+        for winner, loser in matches:
+            counts[winner] += 0
+            counts[loser] += 1
+            
+        zero_losses = [] # initialize arrays for zero losses
+        one_loss = [] # initialize array for one loss
+
+        for player in sorted(counts.keys()): #loop through the sorted set
+            if counts[player] == 0: # go through the hashmap, if the freq is 0
+                zero_losses.append(player) # add the player to 0 losses
+            elif counts[player] == 1: # add players with 1 loss
+                one_loss.append(player)
+                
+        return [zero_losses, one_loss] # return answer
+    
+    
