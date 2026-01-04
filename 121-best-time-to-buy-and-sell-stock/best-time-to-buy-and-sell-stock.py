@@ -8,9 +8,8 @@ class Solution:
         ans = 0
         left = 0
         for right in range(1, len(prices)): # looping through to find the buy day
-            if prices[right] < prices[left]: #  comparing the price 
-                if prices[right] != len(prices): # don't consider last element as a buy day
-                    left = right # if right is lower than swap
+            if prices[right] < prices[left] and prices[right] != len(prices): # don't consider last element as a 
+                left = right # if right is lower than swap
             elif prices[right] > prices[left]:
                 ans = max(ans, prices[right] - prices[left])
         return ans
