@@ -4,17 +4,16 @@ class Solution:
         # candies [i] = # of candies kid has
         # int extraCandies = # of extra candies
         # return boolean array for all the kids, result[i] is true
-        ans = []
+        ans = [False] * len(candies)
         mostCandies = False
         kidMax = 0
         for i in range(len(candies)):
             kidMax = max(candies)
             kidAndExtraCandies = candies[i] + extraCandies
             if kidAndExtraCandies >= kidMax:
-                mostCandies = True
+                ans[i] = True
             else:
-                mostCandies = False
-            ans.append(mostCandies)
+                ans[i] = False
         return ans
             
                 
