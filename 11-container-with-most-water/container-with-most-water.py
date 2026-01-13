@@ -1,15 +1,19 @@
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        max_water = 0 # set var
-        left, right = 0, len(height) - 1
+        # You are given an array height of n length
+        left = 0
+        right = len(height) - 1
+        maximum_water = 0
+
         while left < right:
-            curr_height = min(height[left], height[right])
-            curr_width = right - left
-            curr_area = curr_height * curr_width
-            max_water = max(max_water, curr_area)
-            # Move the pointer at the shorter line
-            if height[left] < height[right]:
-                left += 1
-            else:
+            min_height = min(height[left], height[right]) # Find the smaller height
+            curr_width = right - left # find the current width
+            curr_area = curr_width * min_height # current area calculation
+            maximum_water = max(maximum_water, curr_area)
+            
+            if height[left] > height[right]: #keep the bigger value
                 right -= 1
-        return max_water
+            else:
+                left += 1
+        return maximum_water
+
