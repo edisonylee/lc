@@ -10,8 +10,8 @@ class Solution:
             else:
                 if not stack: # If that stack is already empty, we can return False
                     return False
-                previous_opening = stack.pop()
-                if matching[previous_opening] != c:
+                previous_opening = stack.pop() # get's the last opening
+                if matching[previous_opening] != c: # if the closing bracket of the last opening is not the current c, return False
                     return False
         return not stack # Return True if stack empty
                     
