@@ -1,9 +1,14 @@
 class Solution:
     def removeDuplicates(self, s: str) -> str:
+        #1. Create a stack
+        #2. If the first element (on the stack) is equal to the current character, pop it.
+        #3. Else, add it to the stack.
+        #4. Return a string after all removals have been made. 
+
         stack = []
-        for c in s: # loop through string
-            if stack and stack[-1] == c:#if stack is non empty and the first element is c # pop
+        for c in s:
+            if stack and c == stack[-1]:
                 stack.pop()
             else:
-                stack.append(c) # appends if the first element at the top is not equal to c 
-        return "".join(stack) # return a string 
+                stack.append(c)
+        return "".join(stack)
