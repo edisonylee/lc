@@ -6,17 +6,17 @@ class Solution:
             if s not in operators:
                 stack.append(s)
             else:
-                second_element = stack.pop()
-                first_element = stack.pop()
+                second_element = int(stack.pop())
+                first_element = int(stack.pop())
 
                 if s == "+":
-                    stack.append(int(first_element) + int(second_element))
+                    stack.append(first_element + second_element)
                 if s == "-":
-                    stack.append(int(first_element) - int(second_element))
+                    stack.append(first_element - second_element)
                 if s == "*":
-                    stack.append(int(first_element) * int(second_element))
+                    stack.append(first_element * second_element)
                 if s == "/":
-                    stack.append(int(first_element) / int(second_element))
+                    stack.append(first_element / second_element)
         return int(stack[-1])
                 
 
