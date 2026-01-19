@@ -1,17 +1,19 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        # Given an array with prices
-        # Return max profit - highest prices in the week - lowest price in the week in order
-        # [ 7, 1, 5, 3, 6, 4]
-        #  I want to find the lowest price of the week, loop until len - 1
-        # I want to find the highest price of the week, loop until len
-        ans = 0
-        left = 0
-        for right in range(1, len(prices)): # looping through to find the buy day
-            if prices[right] < prices[left]: # don't consider last element as a 
-                left = right # if right is lower than swap
-            elif prices[right] > prices[left]:
-                ans = max(ans, prices[right] - prices[left])
-        return ans
-                
+        # You are given an integer array prices where
+        # prices [i] is the price of NeetCoin on the ith day. 
+        # You may choose a single day to buy one NeetCoin and choose a different day in the fu ture to sell ti.
+        # Return the maximum profit you can achieve. You may choose to not make any transacations.
 
+        profit = 0 # init profit
+        left = 0 # init left pointer
+        for right in range(1, len(prices)): # loop thru starting from index 1 bc left is at index 0
+            if prices[right] < prices[left]: # so the min(left) is going to be swapped until last element
+                left = right
+            elif prices[right] > prices[left]: # prices[right] greater than prices[left] means that we can subtract to find the profit
+                profit = max(profit, prices[right] - prices[left]) # the profit is going to be recalculated for each pass
+        
+        # [10, 1, 5, 6, 7, 1]
+        # 1. 1 < 10 so now left = 1. Now, for index 2, 5 is not less so lets calculate 5 - 1. It's 4, 5, 6. Then 
+        # for the last element left pointer is sewt to the right but nothing else is ran so it doesnt really matter.
+        return profit
