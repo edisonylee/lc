@@ -3,10 +3,12 @@ class Solution:
         def build(s):
             stack = []
             for c in s:
-                if c != "#":
+                if c != '#':
                     stack.append(c)
                 else:
                     if stack:
                         stack.pop()
             return "".join(stack)
-        return build(s) == build(t)
+        stringS = build(s)
+        stringT = build(t)
+        return stringS == stringT
