@@ -1,6 +1,6 @@
 class Solution:
     def defangIPaddr(self, address: str) -> str:
-        ans = []
+        ans = [] #string are immmuttable
         for i in range(len(address)):
             if address[i] != ".":
                 ans.append(address[i])
