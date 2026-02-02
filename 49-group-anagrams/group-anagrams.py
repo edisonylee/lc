@@ -1,15 +1,13 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        # Given an array of strings strs, group the anagrams together. You can return the answer in any order.
-        # So, given random array of strings, group the words that have all the same letters and frequencies together.
-
-        # We can sort all of the strings within the array, strings that are the same can be added to as well.
+        # 1. Loop through the words in strs
+        # 2. Sort the word and that as a key to access the hashmap
+        # 3. Append it to the hashmap key as a list
         dic = {}
         for word in strs:
-            key = "".join(sorted(word)) # remember we want to store the sorted word as a key
-            if key in dic:
-                dic[key].append(word)
-            else:
+            key = "".join(sorted(word))
+            if key not in dic:
                 dic[key] = []
-                dic[key].append(word)
+            dic[key].append(word)
         return list(dic.values())
+            
